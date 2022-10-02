@@ -111,7 +111,7 @@ root.update()
 tree = ttk.Treeview(tableframe, columns=(1, 2, 3), show="headings", height=5)
 tree.pack()
 
-# ...............table headings.............
+# ...............table headings............
 tree.heading(1, text="NAME")
 tree.heading(2, text="ROOM NO")
 tree.heading(3, text="BILL")
