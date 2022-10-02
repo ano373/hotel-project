@@ -2,14 +2,9 @@ import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
-
-import colored as colored
 import dictlist as dictlist
 import pymysql
 from tkinter import *
-
-
-
 
 # .................. frame style fun............
 def frame_style(labelframe):
@@ -22,8 +17,6 @@ def frame_style(labelframe):
                          width=60)
 
 # ...........insert database into table.............
-# Dict's are unordered,
-# therfore you need a list of fieldnames in your desired order
 def table_update(rows):
     tree.delete(*tree.get_children())
     for n, _dict in enumerate(rows, 1):
@@ -74,9 +67,9 @@ def checkout_guest():
      cursor.execute(query)
      db.commit()
      clear()
-
     else:
-        return True
+        pass
+
 # .............data conn.................
 db = pymysql.connect(host='localhost',
                      user='ano',
@@ -102,12 +95,10 @@ root.title("HOTEL MANAGEMENT")
 
 # .........list of all guests frame.........
 tableframe = LabelFrame(root, text="Guest list")
-bar = LabelFrame(root)
-Label(bar,text='Check in form',font = ("prototype",35,"bold"), bg = "#9e6960",anchor="w",fg="#ffffff").place(relx=0, rely=0, relheight=0.10, relwidth=1)
-
+Label(root,text='Data Management',font = ("prototype",30,"bold"), bg = "#9e6960",anchor="w",fg="#ffffff").place(relx=0, rely=0, relheight=0.10, relwidth=1)
 searchframe = LabelFrame(root, text="Search")
 Dataframe = LabelFrame(root, text="Guest Data")
-tableframe.pack(fill="both", expand="yes", padx=20, pady=10)
+tableframe.pack(fill="both", expand="yes", padx=20, pady=55)
 searchframe.pack(fill="both", expand="yes", padx=20, pady=10)
 Dataframe.pack(fill="both", expand="yes", padx=20, pady=10)
 frame_style(tableframe)
@@ -138,8 +129,8 @@ clear_btn=Button(searchframe,text="Clear",command=clear)
 clear_btn.pack(side=tkinter.LEFT,padx=6)
 
 # guest data section
-def gridplace(lab,row,column,txtvar):
-    lbl = Label(Dataframe,text=lab)
+def gridplace(lbl_name,row,column,txtvar):
+    lbl = Label(Dataframe,text=lbl_name)
     lbl.grid(row=row,column=column,padx=5,pady=3)
     ent = Entry(Dataframe,textvariable=txtvar)
     ent.grid(row=row,column=column+1,padx=5,pady=3)
