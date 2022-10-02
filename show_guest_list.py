@@ -51,7 +51,7 @@ root.update()
 
 # ........... treeview table..................
 tree = ttk.Treeview(tableframe, columns=(1, 2, 3), show="headings", height=tableframe.winfo_height())
-tree.pack()
+tree.pack( c)
 
 # ...............table headings.............
 tree.heading(1, text="NAME")
